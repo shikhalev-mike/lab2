@@ -28,7 +28,7 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectDTO> findAll(String search) {
         List<Project> projects;
         if (search != null) {
-            projects = projectRepository.findByNameContainsIgnoreCaseAndDescriptionContainsIgnoreCase(search, search);
+            projects = projectRepository.findByNameContainsIgnoreCaseAndDescriptionContainsIgnoreCase(search);
         } else {
             projects = projectRepository.findAll();
         }
