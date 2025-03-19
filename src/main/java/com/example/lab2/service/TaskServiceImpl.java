@@ -6,10 +6,12 @@ import com.example.lab2.entity.Task;
 import com.example.lab2.mapper.TaskMapper;
 import com.example.lab2.repository.ProjectRepository;
 import com.example.lab2.repository.TaskRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;

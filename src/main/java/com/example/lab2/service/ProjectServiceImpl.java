@@ -5,12 +5,14 @@ import com.example.lab2.entity.Project;
 import com.example.lab2.mapper.ProjectMapper;
 import com.example.lab2.repository.ProjectRepository;
 import com.example.lab2.repository.TaskRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Service
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
