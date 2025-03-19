@@ -8,9 +8,14 @@ import java.util.Optional;
 
 public interface ProjectService {
     List<ProjectDTO> findAll(String search);
+
     Optional<ProjectDTO> findById(Long id);
+
     ProjectDTO create(ProjectDTO projectDTO);
+
     Optional<ProjectDTO> update(Long id, ProjectDTO projectDTO);
+
     void delete(Long id);
+
     Map<Long, Long> countUncompletedTasks();
 }

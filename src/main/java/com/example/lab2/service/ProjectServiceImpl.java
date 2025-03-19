@@ -72,8 +72,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Map<Long, Long> countUncompletedTasks() {
         Map<Long, Long> countMap = new HashMap<>();
-        taskRepository.findByCompletedFalse()
-                .forEach(task -> countMap.merge(task.getProject().getId(), 1L, (oldValue, newValue) -> oldValue + 1));
+        taskRepository.findByCompletedFalse().forEach(task -> countMap.merge(task.getProject().getId(), 1L, (oldValue, newValue) -> oldValue + 1));
         return countMap;
     }
 }
