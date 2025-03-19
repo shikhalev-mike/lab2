@@ -20,6 +20,18 @@ public class Task {
     @Column(name = "completed", nullable = false)
     private Boolean completed = false;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     public Long getId() {
         return id;
     }
