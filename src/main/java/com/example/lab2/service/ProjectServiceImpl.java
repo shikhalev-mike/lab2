@@ -4,7 +4,9 @@ import com.example.lab2.dto.ProjectDTO;
 import com.example.lab2.entity.Project;
 import com.example.lab2.mapper.ProjectMapper;
 import com.example.lab2.repository.ProjectRepository;
+import com.example.lab2.repository.TaskRepository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
+    private final TaskRepository taskRepository;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper, TaskRepository taskRepository) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
+        this.taskRepository = taskRepository;
     }
 
     @Override
@@ -65,6 +69,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Map<Long, Long> countUncompletedTasks() {
-        return Map.of();
+        Map<Long, Long> countMap = new HashMap<>();
+        taskRepository.findByCompletedFalse()
+                .forEach(task -> countMap.merge(task.getProject().getId(), 1L, (oldValue, newValue) -> oldValue + 1));
+        return countMap;
     }
 }
