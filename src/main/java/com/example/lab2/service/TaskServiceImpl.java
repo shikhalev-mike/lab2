@@ -6,6 +6,7 @@ import com.example.lab2.entity.Task;
 import com.example.lab2.mapper.TaskMapper;
 import com.example.lab2.repository.ProjectRepository;
 import com.example.lab2.repository.TaskRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -67,6 +68,7 @@ public class TaskServiceImpl implements TaskService {
         }
     }
 
+    @Transactional
     @Override
     public void deleteCompleted(Long projectId) {
         projectRepository.findById(projectId).ifPresent(taskRepository::deleteByCompletedTrueAndProject);
