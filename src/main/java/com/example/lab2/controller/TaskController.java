@@ -39,7 +39,7 @@ public class TaskController {
 
     @DeleteMapping("/{taskId}")
     public void deleteTask(@PathVariable Long projectId, @PathVariable Long taskId) {
-        taskService.delete(projectId, taskId);
+        taskService.delete(taskId, projectId);
     }
 
     @DeleteMapping("/completed")
